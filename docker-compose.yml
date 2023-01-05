@@ -1,0 +1,17 @@
+version: "3"
+services:
+  next:
+    container_name: crown
+    image: gregbasera/crown:2.4 # check dockerhub for updated version
+    ports:
+      - "3000:3000"
+    depends_on:
+      - "data"
+
+  data:
+    container_name: crowndb
+    image: gregbasera/crowndb:1.1 # check dockerhub for updated version
+    volumes:
+      - ./database:/usr/src/app/.tmp
+    ports:
+      - "1337:1337"
